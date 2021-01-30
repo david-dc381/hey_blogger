@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 // rutas clásicas
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('posts', 'PostController');
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

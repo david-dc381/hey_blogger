@@ -22,6 +22,20 @@ class User extends Authenticatable
         'password',
     ];
 
+    // un usuario tiene muchos comentarios
+    public function comments() {
+        return $this->hasMany('App\Models\Comment');
+    }
+    // un usuario tiene muchos posts
+    public function posts() {
+        return $this->hasMany('App\Models\Post');
+    }
+    // un usuario solo tiene un rol en el sistema
+    public function rol() {
+        return $this->belongsTo('App\Models\Rol');
+    }
+
+
     /**
      * The attributes that should be hidden for arrays.
      *

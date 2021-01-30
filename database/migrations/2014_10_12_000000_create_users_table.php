@@ -98,6 +98,7 @@ class CreateUsersTable extends Migration
          Schema::create('comentarios', function (Blueprint $table){
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
+            $table->text('descripcion_comentario');
             $table->unsignedBigInteger('usuario_id');
             $table->unsignedBigInteger('post_id');
             $table->timestamps();
