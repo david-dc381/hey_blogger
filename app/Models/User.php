@@ -17,14 +17,17 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'nombre',
+        'nombre_usuario',
         'email',
         'password',
+        'foto',
+        'rol_id',
     ];
 
     // un usuario tiene muchos comentarios
-    public function comments() {
-        return $this->hasMany('App\Models\Comment');
+    public function comentarios() {
+        return $this->hasMany('App\Models\Comentario');
     }
     // un usuario tiene muchos posts
     public function posts() {

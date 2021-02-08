@@ -11,25 +11,26 @@ class Post extends Model
 	protected $fillable = [
 		'titulo_post',
 		'descripcion_post',
+		'foto',
 		'usuario_id',
 		'categoria_id',
 	];
 		// use HasFactory;
 	
 	// un post tiene solo una categoria
-	public function category() {
-		return $this->belongsTo('App\Models\Category');
+	public function categoria() {
+		return $this->belongsTo('App\Models\Categoria');
 	}
 	// un post tiene muchos comentarios
-	public function comments() {
-		return $this->hasMany('App\Models\Comment');
+	public function comentarios() {
+		return $this->hasMany('App\Models\Comentario');
 	}
 	// un post tiene un usuario
-	public function user() {
+	public function usuario() {
 		return $this->belongsTo('App\Models\User');
 	}
 	// un post tiene muchas etiquetas
-	public function posts_taga() {
-		return $this->hasMany('App\PostTag');
+	public function posts_etiquetas() {
+		return $this->hasMany('App\Models\PostEtiqueta');
 	}
 }

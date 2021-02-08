@@ -1,0 +1,33 @@
+body {
+  background-color: #252525;
+  color: #fff;
+}
+/* .titulo */
+h1 {
+  font-size: 4rem;
+  margin: 7rem 0 5rem 0;
+}
+.portada {
+  width: 100%;
+}
+.portada img {
+  display: block;
+  margin: auto;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+/* botones */
+
+.boton-post {
+  border: 2px solid #11E9A4;
+  color: #11E9A4;
+  padding: .5em 1em;
+}
+.boton-post:hover {
+  color:#fff;
+  border: 2px solid #11E9A4;
+  background: linear-gradient(232.5deg, #11E9A4 0%, #3FC89D 25%, #26C9CF 50%, #1584D3 75%, #1554D3 100%);    
+}
+

@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+// esta línea es para usar bootstrap ya que laravel 8 usa tailwind
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // par agregar las paginas de bootstrap 
+        Paginator::useBootstrap();
     }
 }

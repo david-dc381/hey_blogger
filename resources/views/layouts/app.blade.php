@@ -12,8 +12,9 @@
         Hey Blogger :)
     </title>
 
-    <!-- Scripts -->
+    <!-- Scripts -->    
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,10 +22,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel= "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css"/>
+
+
+
+
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #6176f3;">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm fixed-top" style="background: linear-gradient(232.5deg, #11E9A4 0%, #3FC89D 25%, #26C9CF 50%, #1584D3 75%, #1554D3 100%);">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
@@ -48,36 +54,36 @@
                         @if ( Route::has('login') )
                             @auth
                                 <li class="nav-item">
-                                    <a href="{{ url('posts') }}" class="nav-link">Posts</a>
+                                    <a href="{{ url('posts') }}" class="nav-link text-white">Posts</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Etiquetas</a>
+                                    <a href="{{ url('etiquetas') }}" class="nav-link text-white">Etiquetas</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Categorias</a>
+                                    <a href="{{ url('categorias') }}" class="nav-link text-white">Categorias</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Roles</a>
+                                    <a href="{{ url('roles') }}" class="nav-link text-white">Roles</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Usuarios</a>
+                                    <a href="{{ url('usuarios') }}" class="nav-link text-white">Usuarios</a>
                                 </li>
                             @endauth
                         @endif
 
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <!-- <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a> -->
                                 </li>
                             @endif
                         @else
 
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->nombre_usuario }}
                                 </a>
 
@@ -85,7 +91,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Cerrar Sesión') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -99,9 +105,11 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 mt-5">
             @yield('content')
         </main>
     </div>
 </body>
+<!-- importamos este código a todos las vistas -->
+@yield('summernote')
 </html>
