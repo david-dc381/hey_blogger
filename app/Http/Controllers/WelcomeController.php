@@ -16,13 +16,66 @@ class WelcomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function welcome()
+    public function welcome(Request $request)
     {
-        $posts2 = Post::paginate(6); //le indicamos que nos muestre la paginación de 6 en 6 productos.
-        return view('welcome', compact('posts2')); //listado de productos
+        // para la busqueda de posts, esto esta vinculado al modelo Post.php
+        // $nombre_post = $request->get('titulo_post');
+        // ->titulo_post($nombre_post)
+
+        if ($request) {
+            $query = trim($request->get('search'));
+            
+            $posts2 = Post::orderBy('id');
+            $posts2 = Post::where('titulo_post', 'LIKE', '%'.$query.'%')
+            ->orderBy('id', 'ASC')
+            ->paginate(6); //le indicamos que nos muestre la paginación de 6 en 6 productos.
+            // ->get();
+            
+
+             return view('welcome', compact('posts2', 'query')); //listado de productos
+        }
+
+        // $posts2 = Post::paginate(6);
+        // return view('welcome', compact('posts2')); 
         
-        // $posts2 = Post::all();
-        // return view('welcome')->with(compact('posts2', 'paginate')); 
+    }
+
+    public function buscador(Request $request)
+    {
+        // if($request->ajax()) {
+        //     $output = '';
+        //     $query = $request->get('query');
+        //     if ($query != '') {
+        //         $data = DB::table('posts')
+        //         ->where('titulo_post', 'like', '%'.$query.'%')
+        //         ->orderBy('id', 'ASC')
+        //         ->paginate(6);
+        //     } else {
+        //         $data = DB::table('posts')
+        //         ->orderBy('id', 'ASC')
+        //         ->paginate(6);
+        //     }
+
+        //     // $total_filas = $data->count;
+        //     // if ($total_filas === 0) {
+        //     //     $output = '<tr>
+        //     //         <td align="center" colspan="5" class="text-white">No se encontraron</td>
+        //     //     </tr>';
+        //     // }
+
+        //     $data = array(
+        //         'table_data' => $output,
+        //     );
+
+        //     echo json_encode($data);
+        // }
+
+
+        
+
+        // $postsBuscar = Post::where('titulo_post', 'like', '%'. $request->get('searchQuest').'%')->get();
+        
+        // return json_encode($postsBuscar);
     }
 
 

@@ -47,7 +47,7 @@
 																@endif
 															</td>
 															<td class="d-flex">
-																<a href="/usuarios/{{ $user->id }}/edit" class="btn btn-warning mr-3 ml-3">
+																<a href="/usuarios/{{ $user->id }}/edit" class="btn btn-warning mr-2 ml-2 text-decoration-none text-white">
 																	Editar
 																</a>
 

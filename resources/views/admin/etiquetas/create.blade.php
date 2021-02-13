@@ -37,6 +37,7 @@
 												{!! Form::text('nombre_etiqueta', null, ['class'=>'form-control', 'required'=>'required']) !!}
 
 												<div class="text-center mt-3">
+													<a href="{{ url('/etiquetas/') }}" class="btn btn-outline-danger">Cancelar</a>
 													{!! Form::submit('Registrar', ['class'=>'btn btn-outline-success']) !!}
 												</div>
 

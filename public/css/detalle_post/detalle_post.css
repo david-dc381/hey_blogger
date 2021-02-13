@@ -1,11 +1,20 @@
 body {
   background-color: #252525;
-  color: #fff;
 }
+
+main {
+  background:linear-gradient( 
+  135deg,
+  #252525 0%, #061d27 25%, #09213a 50%, #10489e 75%, #005794 100%);
+}
+
 /* .titulo */
 h1 {
   font-size: 4rem;
-  margin: 7rem 0 5rem 0;
+  margin: 5rem 0 1rem 0;
+  color: #fff;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: 700;
 }
 .portada {
   width: 100%;
@@ -14,12 +23,26 @@ h1 {
   display: block;
   margin: auto;
   justify-content: center;
-  width: 100%;
+  width: 93%;
   height: auto;
 }
 
-/* botones */
+/* descripción */
+.descripcion_post {
+  display: block;
+  margin: 0 auto;
+  width: 93%;
+  font-family: 'Raleway', sans-serif;
+  color: rgb(75, 75, 75);
+  font-size: .96rem;
+  font-weight: 580;
+}
 
+/* botones */
+.container_boton {
+  width: 93%;
+  margin: auto;
+}
 .boton-post {
   border: 2px solid #11E9A4;
   color: #11E9A4;

@@ -85,7 +85,7 @@ main {
   height: auto;
 }
 .button-card {
-  padding: .8em 1em;
+  padding: 0 1em .8em 1em;
 }
 
 /* footer */

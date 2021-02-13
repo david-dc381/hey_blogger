@@ -5,7 +5,7 @@
 		<div class="row justify-content-center">
 	        <div class="col-md-8">
 	            <div class="card">
-	                <div class="card-header d-flex justify-content-between align-items-center" ><h5 class="mt-1">Etiqueta - Registrar</h5>
+	                <div class="card-header d-flex justify-content-between align-items-center" ><h5 class="mt-1">Roles - Registrar</h5>
 	                </div>
 
 	               {{--  <div class="card-body">
@@ -41,6 +41,7 @@
 												{!! Form::number('puntos', null, ['class'=>'form-control', 'required'=>'required', 'placeholder' => '0']) !!}
 
 												<div class="text-center mt-3">
+													<a href="{{ url('/roles/') }}" class="btn btn-outline-danger">Cancelar</a>
 													{!! Form::submit('Registrar', ['class'=>'btn btn-outline-success']) !!}
 												</div>
 

@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
+    <title>Hey Blogger :)</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -105,13 +104,25 @@
                   <a href="pages/course-filter-list.html" class="btn btn-outline-primary btn-sm">View All</a>
               </div> -->
           </div>
-          <div class="row d-flex justify-content-center">
+
+          <!-- Seccipon de busqueda -->
+         <nav class="navbar navbar-light bg-transparent">
+          <form class="form-inline d-block m-auto">
+            <input id="search-posts" class="form-control mr-sm-2" name="search" type="search" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            <a href="{{ url('/') }}" class="btn btn-outline-primary my-2 my-sm-0">Inicio</a>
+          </form>
+        </nav>
+
+
+
+          <div id="datos-posts" class="row d-flex justify-content-center">
             @foreach ($posts2 as $post2)
               <div class="card mx-3 mt-5" style="width: 18rem;">
                 <img src="{{ asset('img/posts/'.$post2->foto) }}" class="card-img-top img-post" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title text-monospace font-weight-bold">{{ $post2->titulo_post}} </h5>
-                  <!-- <p class="card-text text-sm">{{ $post2->descripcion_post }}</p> -->
+                  <h5 class="card-title font-weight-bold">{!! $post2->titulo_post !!} </h5>
+                  <!-- <p class="card-text text-sm">{!! $post2->descripcion_post !!}</p> -->
                 </div>
                 <div class="button-card">
                   <a href="{{ url('/detalle_post/'.$post2->id) }}" class="btn btn-primary">Visitar Post</a>
@@ -122,7 +133,7 @@
                       <!-- <img src="assets/images/avatar-1.jpg" class="rounded-circle avatar-xs" alt=""> -->
                     </div>
                     <div class="col ml-2">
-                      <span>@ {{ $post2->usuario->nombre_usuario }}</span>
+                      <span>@ {!! $post2->usuario->nombre_usuario !!}</span>
                     </div>
                     <div class="col-auto">
                       <a href="#!" class="text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Bookmarks">
@@ -156,6 +167,8 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
 
 <script>
   // para el scroll del nav
@@ -168,6 +181,61 @@
         $('#menu').removeClass('shadow-lg');
     }
   });
+
+
+  // $(document).ready(function(){
+  //   $('main').on('keyup', '#search-posts', function() {
+  //     let searchQuest = $(this).val();
+
+  //     $.ajax({
+  //       method: 'POST',
+  //       url: '{{ route("search-posts") }}',
+  //       dataType: 'json',
+  //       data: {
+  //         '_token': '{{ csrf_token() }}',
+  //         searchQuest: searchQuest,
+  //       },
+  //       success: function(res) {
+  //         let tableRow = '';
+  //         $('#datos-posts').html('');
+          
+  //         $.each(res, function(index, value){
+  //           tableRow = `
+  //              <div class="card mx-3 mt-5" style="width: 18rem;">
+  //               <img src= {{ asset('img/posts/'.$post2->foto) }} class="card-img-top img-post" alt="...">
+  //               <div class="card-body">
+  //                 <h5 class="card-title font-weight-bold">` + value.titulo_post + `</h5>
+  //               </div>
+  //               <div class="button-card">
+  //                 <a href="{{ url("/detalle_post/".$post2->id) }}" class="btn btn-primary">Visitar Post</a>
+  //               </div>
+  //               <div class="card-footer">
+  //                 <div class="row align-items-center no-gutters">
+  //                   <div class="col-auto">
+  //                     <!-- <img src="assets/images/avatar-1.jpg" class="rounded-circle avatar-xs" alt=""> -->
+  //                   </div>
+  //                   <div class="col ml-2">
+  //                     <span>@' + value.usuario.nombre_usuario + '</span>
+  //                   </div>
+  //                   <div class="col-auto">
+  //                     <a href="#!" class="text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Bookmarks">
+  //                       <i class="fe fe-bookmark  "></i>
+  //                     </a>
+  //                   </div>
+  //                 </div>
+  //               </div>
+  //             </div>
+  //         `;
+
+  //           $('#datos-posts').append(tableRow);
+  //         });
+  //       }
+  //     });
+  //   });
+
+
+
+  // });
 </script>
 
 </html>

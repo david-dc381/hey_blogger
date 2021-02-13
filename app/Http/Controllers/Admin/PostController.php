@@ -16,21 +16,42 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        // mostramos los datos por su id de manera descendente
-        $posts = Post::orderBy('id', 'ASC')->paginate(6);
         // con compact hacemos que $posts se convierta en la clave y
         // el contenido de $posts se convierta en el valor de esa clave
-        // dd($posts);
-        return view('admin/posts.index', compact('posts')); // junto a la vista mostramos los datos.
+        
+        if ($request) {
+            $query = trim($request->get('search'));
+
+            // $posts = Post::paginate(6);
+            
+            if ($query != '') {
+                // $posts = Post::orderBy('id');
+                $posts = Post::where('titulo_post', 'LIKE', '%'.$query.'%')
+                ->orderBy('id', 'ASC') // mostramos los datos por su id de manera descendente
+                ->paginate(6); //le indicamos que nos muestre la paginación de 6 en 6 productos.        
+                return view('admin/posts.index', compact('posts', 'query')); // junto a la vista mostramos los datos.
+                
+            } else {
+                $posts = Post::orderBy('id', 'ASC')
+                ->paginate(6);
+                return view('admin/posts.index', compact('posts')); // junto a la vista mostramos los datos.
+            }
+                
+        }
+    }
+
+    public function buscador(Request $request) {
+        $postsBuscar = Post::where('titulo_post', 'like', '%'. $request->get('searchQuest').'%')->get();
+        return json_encode($postsBuscar);
     }
 
 
     public function create()
     {
         // traemos los datos antes de registrarlos
-        $etiquetas  = Etiqueta::orderBy('id', 'ASC')->pluck('nombre_etiqueta', 'id');
+        $etiquetas  = Etiqueta::orderBy('id', 'ASC')->get();
         $categorias = Categoria::orderBy('id', 'ASC')->pluck('nombre_categoria', 'id');
         $usuarios   = User::orderBy('id', 'ASC')->pluck('nombre', 'id');
 
@@ -91,7 +112,7 @@ class PostController extends Controller
     public function edit($id)
     {
          // obtenemos los datos de la vista para editar
-        $etiquetas = Etiqueta::orderBy('nombre_etiqueta', 'Asc')->pluck('nombre_etiqueta', 'id');
+        $etiquetas = Etiqueta::orderBy('nombre_etiqueta', 'Asc')->get();
         $categorias = Categoria::orderBy('nombre_categoria', 'Asc')->pluck('nombre_categoria', 'id');
         $usuarios = User::orderBy('nombre', 'Asc')->pluck('nombre', 'id');
 

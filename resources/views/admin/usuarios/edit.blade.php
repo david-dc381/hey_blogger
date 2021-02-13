@@ -5,7 +5,8 @@
 		<div class="row justify-content-center">
 	        <div class="col-md-8">
 	            <div class="card">
-	                <div class="card-header d-flex justify-content-between align-items-center" ><h5 class="mt-1">Etiquetas - Editar</h5>
+	                <div class="card-header d-flex justify-content-between align-items-center" >
+										<h5 class="mt-1">Usuarios - Editar</h5>
 	                </div>
 
 	               {{--  <div class="card-body">
@@ -58,11 +59,7 @@
 												!!}
 												
 												<label for="">Contraseña:</label>
-												{!! Form::password('password', null, 
-															['class'		=> 'form-control', 
-															 'required' => 'required'
-															]) 
-												!!}
+												<input type="password" name="password" class=" form-control col-sm-12">
 												
 												<label for="">Rol:</label>
 												{!! Form::select('rol_id', $roles, null, 
@@ -73,16 +70,15 @@
 												
 												<label for="">Foto de pérfil:</label>
 												@if( $user->foto != '' )
-													{!! Form::file('file', null, 
-																['class'		=> 'form-control-file', 
-																'required'=>'required'
-																]) 
-													!!}
+													<input type="file" name="file" class="col-sm-12">
 												@endif
 
 												<div class="text-center mt-3">
+													<a href="{{ url('/usuarios/') }}" class="btn btn-outline-danger">Cancelar</a>
 													{!! Form::submit('Editar', ['class'=>'btn btn-outline-success']) !!}
 												</div>
+
+
 
 											{!! Form::close() !!}
 	                </div>

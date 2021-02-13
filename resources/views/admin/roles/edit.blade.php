@@ -5,7 +5,7 @@
 		<div class="row justify-content-center">
 	        <div class="col-md-8">
 	            <div class="card">
-	                <div class="card-header d-flex justify-content-between align-items-center" ><h5 class="mt-1">Etiquetas - Editar</h5>
+	                <div class="card-header d-flex justify-content-between align-items-center" ><h5 class="mt-1">Rol - Editar</h5>
 	                </div>
 
 	               {{--  <div class="card-body">
@@ -48,8 +48,9 @@
 												]) !!}
 													
 												<div class="text-center mt-3">
+													<a href="{{ url('/roles/') }}" class="btn btn-outline-danger">Cancelar</a>
 													{!! Form::submit('Editar', [
-														'class'	=> 'btn btn-success'
+														'class'	=> 'btn btn-outline-success'
 													]) !!}
 												</div>
 											{!! Form::close() !!}

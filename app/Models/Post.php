@@ -33,4 +33,16 @@ class Post extends Model
 	public function posts_etiquetas() {
 		return $this->hasMany('App\Models\PostEtiqueta');
 	}
+	
+	
+	
+	
+	// Agreagamos esto para la busqueda de posts en el welcome
+	public function scopeName ($query, $nombre_post) {
+		if($nombre_post) {
+			return 	$query->where('titulo_post', 'LIKE', "%$nombre_post%");
+		}
+	}
 }
+
+

@@ -56,11 +56,7 @@
 												!!}
 												
 												<label for="">Contraseña:</label>
-												{!! Form::password('password', null, 
-															['class'		=> 'form-control', 
-															 'required' => 'required'
-															]) 
-												!!}
+												<input type="password" name="password" class="form-control">
 												
 												<label for="">Rol:</label>
 												{!! Form::select('rol_id', $roles, null, 
@@ -70,13 +66,10 @@
 												!!}
 												
 												<label for="">Foto de pérfil:</label>
-												{!! Form::file('file', null, 
-															['class'		=> 'form-control-file', 
-															 'required'=>'required'
-															]) 
-												!!}
+												<input type="file" name="file" class="col-sm-12">
 
 												<div class="text-center mt-3">
+													<a href="{{ url('/usuarios/') }}" class="btn btn-outline-danger">Cancelar</a>
 													{!! Form::submit('Registrar', ['class'=>'btn btn-outline-success']) !!}
 												</div>
 

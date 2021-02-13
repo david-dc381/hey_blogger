@@ -5,9 +5,18 @@
 		<div class="row justify-content-center">
 	        <div class="col-md-8">
 	            <div class="card">
-	                <div class="card-header d-flex justify-content-between align-items-center" ><h5 class="mt-1">Posts</h5>
+									<div class="card-header d-flex justify-content-between align-items-center" >
+										<h5 class="mt-1">Posts</h5>
 	                	<a href="{{ url('/posts/create') }}" class="btn btn-success">+ Nuevo</a>
-	                </div>
+									</div>
+									
+									<div class="form-group mx-auto mt-4 mb-0">
+										<form class="form-inline d-block">
+											<input id="search-posts" class="form-control mr-sm-2" name="search" type="search" placeholder="Busca un post" aria-label="Search">
+													<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+														<a href="http://localhost:8000/posts" class="btn btn-outline-primary my-2 my-sm-0">Inicio</a>
+										</form>
+									</div>
 
 	               {{--  <div class="card-body">
 	                </div> --}}
@@ -23,9 +32,9 @@
 												<thead class="text-white" style="background-color: #6176f3">
 													<tr>
 														<th scope="col">#</th>
-														<th scope="col">Título</th>
+														<th scope="col" width="150px">Título</th>
 														<th scope="col">Usuario</th>
-														<th scope="col">Categoria</th>
+														<th scope="col" width="100px">Categoria</th>
 														<th scope="col">Portada</th>
 														<th scope="col">Acciones</th>
 													</tr>
@@ -43,9 +52,9 @@
 																@endif
 															</td>
 															<td class="d-flex">
-																<button type="button" class="btn btn-warning mr-2 ml-2">
-																	<a href="/posts/{{ $post->id }}/edit" class="text-decoration-none text-dark">Editar</a>
-																</button>
+																<a href="{{ url('/detalle_post/'.$post->id) }}" class="btn btn-primary">Ver</a>
+																<a href="/posts/{{ $post->id }}/edit" class="btn btn-warning mr-2 ml-2 text-decoration-none text-white">Editar</a>
+																
 																{!! Form::open([
 																	'url'			 => 'posts/'.$post->id,
 																	'method'	 => 'DELETE',

@@ -5,7 +5,7 @@
 		<div class="row justify-content-center">
 	        <div class="col-md-8">
 	            <div class="card">
-	                <div class="card-header d-flex justify-content-between align-items-center" ><h5 class="mt-1">Etiquetas - Editar</h5>
+	                <div class="card-header d-flex justify-content-between align-items-center" ><h5 class="mt-1">Posts - Editar</h5>
 	                </div>
 
 	               {{--  <div class="card-body">
@@ -64,29 +64,32 @@
 															]) 
 												!!}
 												
-												<label for="">Etiquetas:</label>
-												<!-- {!! Form::select('etiquetas[]', $etiquetas, $etiquetas_array, 
-															['id' => 'etiquetas',
-															 'class'		=> 'form-control bs-multiselect selectpicker etiqueta', 
-															 'multiple' => 'multiple', 'required'=>'required'
-															]) 
-												!!} -->
-												
-													@foreach ($etiquetas as $etiqueta)
-														{{ Form::checkbox('etiquetas_array[]', null) }}
-													@endforeach
+												<div class="form-group">
+													{{ Form::label('etiquetas', 'Etiquetas') }}
+													<div>
+														@foreach ($etiquetas as $etiqueta)
+															<label for="">
+																{!! Form::checkbox('etiquetas[]', $etiqueta->id) !!} {!! $etiqueta->nombre_etiqueta !!}
+															</label>	
+														@endforeach
+													</div>
+												</div>
 
-												<label for="">Portada</label>
+												<label for="">Portada:</label>
 												@if($post->foto != '')
-													<img src="{{ asset('img/posts/'.$post->foto) }}" alt="foto portada" width="150px" class="mt-3">
+													<div class="form-group">
+														<img src="{{ asset('img/posts/'.$post->foto) }}" alt="foto portada" width="150px" class="mt-3">
+													</div>
 												@endif
-												{!! Form::file('file', null, 
-															['class'		 => 'form-control',
+												<input type="file" name="file" class="col-sm-12">
+												<!-- {!! Form::file('file', null, 
+															['class'		 => 'from-group col-sm-12',
 																'required' => 'required',
 															]);
-												!!}
+												!!} -->
 
 												<div class="text-center mt-3">
+													<a href="{{ url('/posts/') }}" class="btn btn-outline-danger">Cancelar</a>
 													{!! Form::submit('Actualizar', ['class'=>'btn btn-outline-success']) !!}
 												</div>
 
@@ -113,16 +116,14 @@
 	// 	$('#etiquetas').etiquetas();
 	// });
 
-
 	CKEDITOR.replace('descripcion_post');
+	// CKEDITOR.config.width = 500;
 </script>
 
-<script>
+<!-- <script>
 	$(document).ready(function() {
 	$('#etiqueta').multiselect();
 	});
-</script>
-
-
+</script> -->
 
 @endsection

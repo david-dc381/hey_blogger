@@ -37,9 +37,8 @@
 															
 															<!-- para el boton editar -->
 															<td class="d-flex">
-																<button class="btn btn-sm btn-warning ml-2 mr-2">
-																	<a href="/rols/{{ $rol->id }}/edit" class="text-decoration-none text-dark">Editar</a>
-																</button>
+															<a href="/roles/{{ $rol->id }}/edit" class="btn btn-warning mr-2 ml-2 text-decoration-none text-white">Editar</a>
+																
 															<!-- para el boton eliminar, primero obtenemos los datos a eliminar -->
 															{!! Form::open([
 																	'url'				=> 'roles/'.$rol->id,

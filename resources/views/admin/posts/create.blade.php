@@ -57,24 +57,29 @@
 												
 												<label for="">Descripción:</label>
 												{!! Form::textarea('descripcion_post', null, 
-															['id'				=> 'summernote',
+															[
 															 'class'		=> 'form-control', 
 															 'required' => 'required'
 															]) 
 												!!}
 												
-												<label for="">Etiquetas:</label>
-												{!! Form::select('etiquetas[]', $etiquetas, null, 
-															['class'		=> 'form-control', 
-															 'multiple' => 'multiple', 'required'=>'required'
-															]) 
-												!!}
+												<div class="form-group">
+													{{ Form::label('etiquetas', 'Etiquetas') }}
+													<div>
+														@foreach ($etiquetas as $etiqueta)
+															<label for="">
+																{!! Form::checkbox('etiquetas[]', $etiqueta->id) !!} {!! $etiqueta->nombre_etiqueta !!}
+															</label>	
+														@endforeach
+													</div>
+												</div>
 
 												<label for="">Portada</label>
-												<input type="file" name="file" class="form-control">
+												<input type="file" name="file" class="col-sm-12">
 
 
 												<div class="text-center mt-3">
+													<a href="{{ url('/posts/') }}" class="btn btn-outline-danger">Cancelar</a>
 													{!! Form::submit('Registrar', ['class'=>'btn btn-outline-success']) !!}
 												</div>
 
@@ -100,6 +105,7 @@
 		// 	$('#etiquetas').etiquetas();
 		// });
 		CKEDITOR.replace('descripcion_post');
+		// CKEDITOR.config.width = 500;
 	</script>
 
 @endsection
