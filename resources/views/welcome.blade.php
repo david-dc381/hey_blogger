@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}" />
     <title>Hey Blogger :)</title>
 
     <!-- Fonts -->
@@ -132,8 +133,12 @@
                     <div class="col-auto">
                       <!-- <img src="assets/images/avatar-1.jpg" class="rounded-circle avatar-xs" alt=""> -->
                     </div>
-                    <div class="col ml-2">
-                      <span>@ {!! $post2->usuario->nombre_usuario !!}</span>
+                    <div class="col d-flex justify-content-between align-items-center">
+                      <div>
+                        <img src="{{ asset('img/usuarios/'.$post2->usuario->foto) }}" class="avatar-md rounded-circle" width="40px" height="40px" alt="Foto de usuario">
+                        <span class="small">@ {!! $post2->usuario->nombre_usuario !!}</span>
+                      </div>
+                        <span class="text-black-50 small">{{ $post2->created_at->diffForHumans() }}</span>
                     </div>
                     <div class="col-auto">
                       <a href="#!" class="text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Bookmarks">
