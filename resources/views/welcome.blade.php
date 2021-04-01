@@ -123,7 +123,6 @@
                 <img src="{{ asset('img/posts/'.$post2->foto) }}" class="card-img-top img-post" alt="...">
                 <div class="card-body">
                   <h5 class="card-title font-weight-bold">{!! $post2->titulo_post !!} </h5>
-                  <!-- <p class="card-text text-sm">{!! $post2->descripcion_post !!}</p> -->
                 </div>
                 <div class="button-card">
                   <a href="{{ url('/detalle_post/'.$post2->id) }}" class="btn btn-primary">Visitar Post</a>
