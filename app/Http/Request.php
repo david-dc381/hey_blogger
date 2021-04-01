@@ -1,4 +1,4 @@
-<?php namespace App\Custom\Http;
+<?php namespace App\Http;
 use \Illuminate\Http\Request as Base;
 
 /**

@@ -55,8 +55,8 @@ $response = tap($kernel->handle(
 ))->send(); */
 
 // se agregó este código para que corra nuestra configuración del rwequest
-$response = $kernel->handle(
-    $request = App\Custom\Http\Request::capture()
-);
+$response = tap($kernel->handle(
+    $request = App\Http\Request::capture()
+))->send();
 
 $kernel->terminate($request, $response);
