@@ -96,3 +96,50 @@ main {
   padding: 3em 0;
 }
 /* fin tarjetas */
+
+
+/* Media queries */
+@media all and (max-width: 1020px) {
+  .main-title {
+    font-size: 5rem;
+  }
+  .main-description {
+    margin: 0;
+  }
+}
+@media all and (max-width: 959px) {
+  .main-title {
+    font-size: 4rem;
+  }
+}
+@media all and (max-width: 831px) {
+  .main-title {
+    font-size: 4rem;
+    margin-top: 3rem;
+  }
+  .main-description {
+    border: none;
+    font-size: 1.5rem;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+}
+@media all and (max-width: 460px) {
+  .main-title {
+    font-size: 4rem;
+    margin-left: 3rem;
+  }
+  .main-description {
+    font-size: 1.5rem;
+    padding-left: .7em;
+  }
+}
+
+@media all and (max-width: 375px) {
+  .main-title {
+    margin-left: 2rem;
+  }
+  .main-description {
+    font-size: 1.2rem;
+  }
+}
